@@ -2,6 +2,12 @@
 # define SCALAR CONVERTER_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <climits>
+
+//INT_MIN INT_MAX
+//-std::numeric_limits<float>::min() std::numeric_limits<float>::max()
+//-std::numeric_limits<double>::min() std::numeric_limits<double>::max()
 
 using std::string;
 
@@ -18,16 +24,11 @@ private:
 	~ScalarConverter();
 	ScalarConverter& operator=(const ScalarConverter& other);
 
+	void impossibleCase(void);
+
 };
 
+bool is_all_digit(const string & param);
+bool is_float(const string & param);
+
 #endif
-
-/*
-char // Non displayable [0, 31] + 127 => display "Non displayable"
-
-int
-
-float // -inf, +inf and nanf
-
-double // -inf, +inf, nan
-*/

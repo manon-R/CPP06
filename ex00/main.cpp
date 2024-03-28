@@ -12,5 +12,6 @@ int main(int argc, char **argv){
 		cout << "A string representation of a C++ literal required" << endl;
 		return 0;
 	}
-	cout << argv[1] << endl;
+
+	ScalarConverter::convert(argv[1]);
 }
