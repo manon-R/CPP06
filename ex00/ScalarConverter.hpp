@@ -25,11 +25,13 @@ private:
 	~ScalarConverter();
 	ScalarConverter& operator=(const ScalarConverter& other);
 
-	void impossibleCase(void);
 
 };
 
+void impossibleCase(void);
 bool is_all_digit(const string & param);
 bool is_float(const string & param);
+bool is_double(const string & param);
+
 
 #endif
