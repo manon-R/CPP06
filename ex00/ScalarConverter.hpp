@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <climits>
+#include <cmath>
 
 //INT_MIN INT_MAX
 //-std::numeric_limits<float>::min() std::numeric_limits<float>::max()

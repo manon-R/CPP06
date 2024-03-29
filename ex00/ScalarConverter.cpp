@@ -70,10 +70,13 @@ void ScalarConverter::convert(const string& param){
 	}
 	else if(is_float(param))
 	{
+		char c = '\0';
 		float f = atof(param.c_str());
-		cout << "float: " << f << "f" <<  endl;
+		if (std::isinf(f) && f > 0)
+			c = '+';
+		cout << "float: " << c << f << "f" <<  endl;
 		double d = static_cast<double>(f);
-		cout << "double: " << d << endl;
+		cout << "double: " << c << d << endl;
 	}
 
 }
