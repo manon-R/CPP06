@@ -3,12 +3,9 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <climits>
+#include <limits>
 #include <cmath>
 
-//INT_MIN INT_MAX
-//-std::numeric_limits<float>::min() std::numeric_limits<float>::max()
-//-std::numeric_limits<double>::min() std::numeric_limits<double>::max()
 
 using std::string;
 
@@ -29,6 +26,12 @@ private:
 };
 
 void impossibleCase(void);
+void specialCase(const string & param);
+void charCase(char c);
+void intCase(long l);
+void floatCase(float f);
+void doubleCase(double d);
+
 bool is_all_digit(const string & param);
 bool is_float(const string & param);
 bool is_double(const string & param);
