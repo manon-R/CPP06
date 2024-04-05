@@ -27,11 +27,20 @@ void ScalarConverter::convert(const string& param){
 		return charCase(param[0]);
 	if (is_all_digit(param))
 	{
-		char* endptr;
-		return intCase(strtoll(param.c_str(), &endptr, 10));
+ 		char* endptr;
+		long l = strtoll(param.c_str(), &endptr, 10);
+		if (l > std::numeric_limits<int>::max() || l < std::numeric_limits<int>::min())
+			return doubleCase(std::strtod(param.c_str(), &endptr));
+		return intCase(l);
 	}
 	else if(is_float(param))
+	{
+		char* endptr;
+		long l = strtoll(param.c_str(), &endptr, 10);
+		if (l > std::numeric_limits<int>::max() || l < std::numeric_limits<int>::min())
+			return doubleCase(std::strtod(param.c_str(), &endptr));
 		return floatCase(atof(param.c_str()));
+	}
 	else if (is_double(param))
 	{
 		char *endptr;
@@ -72,6 +81,8 @@ bool is_float(const string & param){
 		else if (param[i] == 'f')
 			nb_f++;
 		else if (param[i] < '0' || param[i] > '9')
+			return false;
+		else if (param[i] && nb_f == 1)
 			return false;
 	}
 	return (nb_f == 1 && nb_p == 1 && nb_m <= 1);
@@ -117,7 +128,10 @@ void intCase(long l)
 		cout << "int: impossible" << endl;
 	else
 		cout << "int: " << i << endl;
-	cout << "float: " << static_cast<float>(l) << ".0f" << endl;
+	if (l > std::numeric_limits<float>::max() || l < -std::numeric_limits<float>::min())
+		cout << "float: impossible" << endl;
+	else
+		cout << "float: " << static_cast<float>(l) << ".0f" << endl;
 	cout << "double: " << static_cast<double>(l) << ".0" << endl;
 }
 
@@ -134,7 +148,10 @@ void floatCase(float f)
 		cout << "char: Non displayable" << endl;
 	else
 		cout << "char: '" << static_cast<char>(i) << "'"<< endl;
-	cout << "int: " << i << endl;
+	if (f > std::numeric_limits<int>::max() || f < std::numeric_limits<int>::min())
+		cout << "int: impossible" << endl;
+	else
+		cout << "int: " << i << endl;
 	if (i == f)
 		cout << "float: " << sign << f << ".0f" <<  endl;
 	else
@@ -158,9 +175,17 @@ void doubleCase(double d)
 		cout << "char: Non displayable" << endl;
 	else
 		cout << "char: '" << static_cast<char>(i) << "'"<< endl;
-	cout << "int: " << i << endl;
+	if (f > std::numeric_limits<int>::max() || f < std::numeric_limits<int>::min())
+		cout << "int: impossible" << endl;
+	else
+		cout << "int: " << i << endl;
 	if (i == f)
 		cout << "float: " << sign << f << ".0f" <<  endl;
+	else if (std::isinf(static_cast<float>(d)))
+	{
+		char sign = (d > 0) ? '+' : '-';
+		cout << "float: " << sign << static_cast<float>(d) << endl;
+	}
 	else
 		cout << "float: " << sign << f << "f" <<  endl;
 	if (i == d)
