@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <stdexcept>
-#include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
@@ -39,8 +38,7 @@ Base* generate(void){
 
 		default:
 			cout << "Problem encounter with the random Number ?" << endl;
-			return NULL;
-			break;     
+			return NULL;   
 	}
 }
 
@@ -100,17 +98,20 @@ void identify(Base& p){
 
 
 int main(void){
-
 	srand(time(NULL));
 	cout << CYAN << "***** Test dynamic cast on pointer *****\n" << RESET << endl;
 	Base *test = generate();
-	identify(test);
+	if (test)
+		identify(test);
 	Base *test1 = generate();
-	identify(test1);
+	if (test1)
+		identify(test1);
 	Base *test2 = generate();
-	identify(test2);
+	if (test2)
+		identify(test2);
 	Base *test3 = generate();
-	identify(test3);
+	if (test3)
+		identify(test3);
 
 	cout << CYAN << "\n***** Test dynamic cast on reference *****\n" << RESET << endl;
 	
