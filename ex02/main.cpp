@@ -46,19 +46,19 @@ Base* generate(void){
 
 void identify(Base* p){
 	A* a = dynamic_cast<A *>(p);
-	if (a)
+	if (a != NULL)
 	{
 		cout << "The object pointed to by p is of type " << GREEN << "A" << RESET << endl;
 		return;
 	}
 	B* b = dynamic_cast<B *>(p);
-	if (b)
+	if (b != NULL)
 	{
 		cout << "The object pointed to by p is of type " << YELLOW << "B" << RESET << endl;
 		return;
 	}
 	C* c = dynamic_cast<C *>(p);
-	if (c)
+	if (c != NULL)
 	{
 		cout << "The object pointed to by p is of type " << MAGENTA << "C" << RESET << endl;
 		return;

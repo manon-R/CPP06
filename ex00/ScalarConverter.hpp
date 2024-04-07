@@ -25,16 +25,4 @@ private:
 
 };
 
-void impossibleCase(void);
-void specialCase(const string & param);
-void charCase(char c);
-void intCase(long l);
-void floatCase(float f);
-void doubleCase(double d);
-
-bool is_all_digit(const string & param);
-bool is_float(const string & param);
-bool is_double(const string & param);
-
-
 #endif
