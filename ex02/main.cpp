@@ -95,8 +95,6 @@ void identify(Base& p){
 }
 
 
-
-
 int main(void){
 	srand(time(NULL));
 	cout << CYAN << "***** Test dynamic cast on pointer *****\n" << RESET << endl;
